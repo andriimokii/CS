@@ -3,7 +3,7 @@ from math import log
 try:
     alph = { }
     summ = 0
-    FilePath = '/Users/andriimokii/Documents/CS/Lab1/text/archive-1/BASE64.txt'
+    FilePath = '/Users/andriimokii/Documents/CS/Lab1/text/test/OUT.txt'
     stream = open(FilePath, 'rt', encoding='UTF-8')
     Text = stream.read()
     for ch in Text:

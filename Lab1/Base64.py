@@ -1,7 +1,7 @@
 from bitstring import BitArray
 
 try:
-    with open('/Users/andriimokii/Documents/CS/Lab1/text/archive-3/CS-Lab1-text2.txt.bz2', 'rb') as f, open('/Users/andriimokii/Documents/CS/Lab1/text/archive-3/BASE64_arch.txt', 'wt', encoding='UTF-8') as out:
+    with open('/Users/andriimokii/Documents/CS/Lab1/text/test/base64_info.txt', 'rb') as f, open('/Users/andriimokii/Documents/CS/Lab1/text/test/OUT.txt', 'wt', encoding='UTF-8') as out:
         pattern = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
         buff_b1 = [ ] 
         counter = -1

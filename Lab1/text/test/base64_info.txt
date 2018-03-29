@@ -1,0 +1,9 @@
+Base64
+1) adds no entropy to the plaintext
+2) increase the amount of plaintext available
+3) provide a signature for cryptanalysis in the form of a characteristic probability distribution
+4) provide compatibility with Internet standart SMTP.
+5) when there is a need to encode binary information that needs to be stored and transferred over media that are developed to deal with textual information. 
+6) is printable ( means you can encode spaces, tabs, and so one )
+ 
+ 
