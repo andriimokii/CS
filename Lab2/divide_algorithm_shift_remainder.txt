@@ -1,0 +1,55 @@
+Divide algorithm Version 2 (with remainder shifting)
+
+6 -> 0110 (dividend)
+3 -> 0011 (divisor)
+-3 -> 1101 (inverse divisor)
+=Step-0=
+Start: Place Dividend in Remainder and add bit to Quotient
+Remainder Quotient Divisor
+0000 0110 00000	   0011
+
+=Step-1=
+Shift the Remainder register left 1 bit
+Remainder Quotient Divisor
+0000 1100 00000	   0011
+
+=Step-2=
+Subtract the Divisor register from the left half of the Remainder register, & place the result in the left half of the Remainder register
+Remainder Quotient Divisor
+0000 1100 00000	   0011
+1101 1100 00000    0011
+
+Condition: test reminder
+Remainder < 0
+
+=Step-3b=
+Restore original value by adding Divisor register to the left half of Remainderregister, & place the result in the left half of the Remainder register
+Remainder Quotient Divisor
+1101 1100 00000    0011
+1101+
+0011=
+0000 1100 00000    0011
+Also shift the Quotient register to the left, setting the new least significant bit to 0
+Remainder Quotient Divisor
+0000 1100 00000    0011
+0000 1100 00000<-  0011
+
+Condition: test counter cycle
+Counter != 5, then continue
+goto =Step-1=
+
+
+INFO
+Condition: test reminder
+if Remainder >= 0; then 3.a Shift the Quotient register to the left setting the new rightmost bit to 1
+if Remainder < 0; then 3.b Restore original value by adding Divisor register to the left half of Remainderregister, & place the result in the left half of the Remainder register. Also shift the Quotient register to the left, setting the new least significant bit to 0
+ 
+Condition: test counter cycle
+Counter < N (N - Takes n + 1 steps for n-bit Divisor)
+
+
+
+
+
+
+

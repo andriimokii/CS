@@ -3,7 +3,7 @@ from bitstring import BitArray
 import sys
 REGSIZE = 3
 counter = 0
-MINUS = False 
+MINUS = False
 
 #dividend and divisor
 idend = BitArray(int=3, length=3)
@@ -11,7 +11,7 @@ isor = BitArray(int=2, length=3)
 print(idend.bin, '/', isor.bin, '(', idend.int, '/', isor.int, ')')
 if isor.int == 0:
     print("division by zero")
-    sys.exit()    
+    sys.exit()
 elif idend.int < 0 and isor.int < 0:
     idend.int -= 1
     idend.invert()
@@ -29,7 +29,7 @@ elif idend.int > 0 and isor.int < 0:
 Rem = BitArray('0b' + '0' * REGSIZE + '0' * (REGSIZE - idend.length) + str(idend.bin))
 Quotient = BitArray('0b' + '0' * (REGSIZE + 1))
 Divisor = BitArray('0b' + '0' * (REGSIZE - isor.length) +  str(isor.bin))
-print('place Dividend in Remainder and add bit to Quotient:\n', Rem.bin, '-',Quotient.bin,'-', Divisor.bin, sep="") 
+print('place Dividend in Remainder and add bit to Quotient:\n', Rem.bin, '-',Quotient.bin,'-', Divisor.bin, sep="")
 while counter < REGSIZE:
     #=Step-1=
     #Shift the Remainder register left 1 bit
