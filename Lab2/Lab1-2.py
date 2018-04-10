@@ -1,9 +1,9 @@
 #!/usr/local/bin/python3
 from bitstring import BitArray
-
+import sys
 #Addend1, addend2 and summary
-Addend1 = BitArray(float=9.75, length=32)
-Addend2 = BitArray(float=0.5625, length=32)
+Addend1 = BitArray(float=-3.75, length=32)
+Addend2 = BitArray(float=3.50, length=32)
 Sum = BitArray(float=0, length=32)
 print(Addend1.bin, Addend2.bin, '(', Addend1.float, '+', Addend2.float, ')')
 
@@ -38,14 +38,24 @@ elif Addend2[0:1].bin == '1':
     mantissa_sum = BitArray(uint=Addend1_one_m.uint - Addend2_one_m.uint, length = Addend1_one_m.len + 1 )
     Sum.overwrite('0b0', 0)
     print('Add significants:', mantissa_sum.bin)
-test = Sum[1:9].uint 
+test = BitArray(uint=Sum[1:9].uint, length=8) 
+print(test.bin)
 if mantissa_sum[0:1].bin == '1':
     del mantissa_sum[-1]
-    test += 1
+    test.uint += 1
+    if test.uint >= 255:
+       print('Infinity')
+       sys.exit()
 else:
     del mantissa_sum[0:1]
+    while mantissa_sum[0:1].bin != '1':
+        del mantissa_sum[0:1]
+        test.uint -= 1
+        if test.uint <= 0:
+            print('0.0')
+            sys.exit()
 print('Normalize result:', mantissa_sum.bin)
-Sum.overwrite(bin(test), 1)
+Sum.overwrite(test, 1)
 Sum.overwrite(mantissa_sum[1:], 9)
 print(Sum.float)
 print(Addend1.float + Addend2.float)       
